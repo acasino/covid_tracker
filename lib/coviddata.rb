@@ -17,11 +17,6 @@ class ::Covidtracker::Coviddata
         @@all
     end
 
-    #lookup state instance by name
-    def find_state(state_name)
-        @@all.detect {|s| state_name == @state}
-    end
-
-
+    
 end
 

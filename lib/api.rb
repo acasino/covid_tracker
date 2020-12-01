@@ -24,5 +24,4 @@ class Covidtracker::API
 end
 
 
-Covidtracker::API.new.get_all_state_current
-binding.pry
+# Covidtracker::API.new.get_all_state_current
