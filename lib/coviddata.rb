@@ -1,6 +1,6 @@
 class Covidtracker::Coviddata
 
-    attr_accessor :date, :state, :states, :positive, :negative, :pending, :hospitalized, :recovered, :lastModified, :death, :deathIncrease, :hospitalizedIncrease, :negativeIncrease, :positiveIncrease, :totalTestResultsIncrease, :dataQualityGrade
+    # attr_accessor :date, :state, :states, :positive, :negative, :pending, :hospitalized, :recovered, :lastModified, :death, :deathIncrease, :hospitalizedIncrease, :negativeIncrease, :positiveIncrease, :totalTestResultsIncrease, :dataQualityGrade
 
     @@all = []
 
@@ -10,7 +10,6 @@ class Covidtracker::Coviddata
             self.send("#{key}=", value)
         end
         @@all << self
-        binding.pry
     end
 
 
