@@ -25,3 +25,4 @@ end
 
 
 Covidtracker::API.new.get_all_state_current
+binding.pry

@@ -4,7 +4,7 @@ class ::Covidtracker::Coviddata
 
     @@all = []
 
-    #initialize state data
+    #create new states
     def initialize(state_hash)
         state_hash.each do |key, value|
             self.class.attr_accessor key
@@ -19,7 +19,7 @@ class ::Covidtracker::Coviddata
 
     #lookup state instance by name
     def find_state(state_name)
-        @@all.detect {|state| state_name == self.name}
+        @@all.detect {|s| state_name == @state}
     end
 
 
