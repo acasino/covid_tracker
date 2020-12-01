@@ -1,18 +1,27 @@
-class Covidtracker::Coviddata
+class ::Covidtracker::Coviddata
 
     # attr_accessor :date, :state, :states, :positive, :negative, :pending, :hospitalized, :recovered, :lastModified, :death, :deathIncrease, :hospitalizedIncrease, :negativeIncrease, :positiveIncrease, :totalTestResultsIncrease, :dataQualityGrade
 
     @@all = []
 
-    def initialize(data_hash)
-        data_hash.each do |key, value|
+    #initialize state data
+    def initialize(state_hash)
+        state_hash.each do |key, value|
             self.class.attr_accessor key
             self.send("#{key}=", value)
         end
         @@all << self
     end
 
+    def self.all
+        @@all
+    end
+
+    #lookup state instance by name
+    def find_state(state_name)
+        @@all.detect {|state| state_name == self.name}
+    end
+
 
 end
 
-# Covidtracker::Coviddata.new.initialize

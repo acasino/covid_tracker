@@ -11,9 +11,9 @@ class Covidtracker::API
     #get all states current data
     def get_all_state_current
         uri = URI(@url)
-        response = Net::HTTP.get(uri) #return response as string
-        data = JSON.parse(response) #parse JSON, return array
-        data.each do |state|  #iterate over each data set and send to Coviddata.new to initialize 
+        response = Net::HTTP.get(uri)          #return response as string
+        data = JSON.parse(response)            #parse JSON, return array
+        data.each do |state|                   #iterate over each data set and send to Coviddata.new to initialize 
             Covidtracker::Coviddata.new(state)
         end
     end
