@@ -13,12 +13,12 @@ class Covidtracker::API
         uri = URI(@url)
         response = Net::HTTP.get(uri) #return response as string
         data = JSON.parse(response) #parse JSON, return array
-        ####
-        # Covidtracker::Coviddata.new(data) #initialize new instance of all state current data
+        data.each do |state|  #iterate over each data set and send to Coviddata.new to initialize 
+            Covidtracker::Coviddata.new(state)
+        end
     end
 
-    #method to separate each state into separate hash to initialize
-    
+
 
 
 end
