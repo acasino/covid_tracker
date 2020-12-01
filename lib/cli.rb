@@ -8,6 +8,7 @@ class Covidtracker::CLI
 
     def greeting
         puts "Now loading COVID TRACKER..."
+        Covidtracker::API.new.get_all_state_current
     end
 
     #display state instance by name
@@ -15,8 +16,10 @@ class Covidtracker::CLI
         Covidtracker::Coviddata.all.each do |s|
             puts "State: #{s.state}"
         end
-        binding.pry
     end
+
+    #asks user which state they want to see
+    
 
     def goodbye
         puts "Thank you for using COVID TRACKER."
