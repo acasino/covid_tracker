@@ -10,16 +10,14 @@ class Covidtracker::Scraper
     #get current data, all states
     def get_all_state_current
         uri = URI(@url)
-        response = Net::HTTP.get(uri)
-        data = JSON.parse(response)
-
+        response = Net::HTTP.get(uri) #return response as string
+        data = JSON.parse(response) #parse JSON, return array
+        binding.pry
     end
 
-
     
-
-
 
 end
 
 
+Covidtracker::Scraper.new.get_all_state_current
