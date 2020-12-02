@@ -3,6 +3,8 @@ class Covidtracker::CLI
     def run
         greeting
         list_states
+        ask_state
+        # get_state
         goodbye
     end
 
@@ -19,7 +21,21 @@ class Covidtracker::CLI
     end
 
     #asks user which state they want to see
-    
+    def ask_state
+        puts "What state would you like to see?"
+        response = gets.strip
+        puts Covidtracker::Coviddata.find_by_state_name(response)
+    end
+
+    # #lookup state by user input
+    # def get_state(response)
+    #     find_by_state_name(response)
+    # end
+
+    #ask user what date they want to see
+
+    #asks user if they want to see metadata
+
 
     def goodbye
         puts "Thank you for using COVID TRACKER."
