@@ -47,7 +47,9 @@ class Covidtracker::CLI
         puts "Deaths: #{Covidtracker::Coviddata.find_by_state_name(state).death}"
         puts "------------------------------"
 
-        # Ask to choose another state
+        #Ask if user would like to see metadata
+
+        #Ask to choose another state
         ask_another
     end
 
@@ -66,8 +68,34 @@ class Covidtracker::CLI
             puts "Please input 'Y' or 'N' only."
             ask_another
         end
-
     end
+
+    #method to retrieve metadata
+    def list_meta(state)
+        puts "------------------------------"
+        puts "State: #{Covidtracker::Coviddata.find_by_state_name(state).name}"
+        puts "State Website: #{Covidtracker::Coviddata.find_by_state_name(state).covid19Site}"
+        puts "Twitter: #{Covidtracker::Coviddata.find_by_state_name(state).twitter}"
+        puts "Additional Notes: #{Covidtracker::Coviddata.find_by_state_name(state).notes}"
+        puts "------------------------------"
+    end
+
+    #method to ask if user would like to see metadata
+    def ask_meta
+        puts "Display state metadata?: Y/N"
+        response = gets.upcase.strip
+
+        if response == "Y"
+            list_meta(ask_state)
+        elsif response == "N"
+            puts "------------------------------"
+        else response != "Y" || response != "N"
+            puts "------------------------------"
+            puts "Please input 'Y' or 'N' only."
+            ask_meta
+        end
+    end
+
 
     #closing message
     def goodbye
