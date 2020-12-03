@@ -28,12 +28,46 @@ class Covidtracker::CLI
 
     def print_data(state)
         puts "You chose: "
-        Covidtracker::Coviddata.list_data(state)        
+        list_data(state)        
+    end
+
+    def list_data(state)
+        puts "------------------------------"
+        puts "State: #{Covidtracker::Coviddata.find_by_state_name(state).state}"
+        puts "Date: #{Covidtracker::Coviddata.find_by_state_name(state).date}"
+        puts "Positive cases: #{Covidtracker::Coviddata.find_by_state_name(state).positive}"
+        puts "Negative cases: #{Covidtracker::Coviddata.find_by_state_name(state).negative}"
+        puts "Positive Case Increase: #{Covidtracker::Coviddata.find_by_state_name(state).positiveIncrease}"
+        puts "Hospitalized: #{Covidtracker::Coviddata.find_by_state_name(state).hospitalized}"
+        puts "Recovered: #{Covidtracker::Coviddata.find_by_state_name(state).recovered}"
+        puts "Deaths: #{Covidtracker::Coviddata.find_by_state_name(state).death}"
+        puts "------------------------------"
+
+        # Ask to choose another state
+        ask_another
+    end
+
+    def ask_another
+        puts "Choose another state?: Y/N"
+        response = gets.upcase.strip
+
+        if response == "Y"
+            ask_state
+        elsif response == "N"
+            puts "------------------------------"
+            puts "Thank you for using COVID TRACKER."
+        else response != "Y" || response != "N"
+            puts "------------------------------"
+            puts "Please input 'Y' or 'N' only."
+            ask_another
+        end
+
     end
 
 
     def goodbye
-        puts "Thank you for using COVID TRACKER."
+        puts "Closing application..."
+        puts "TAKE CARE AND STAY HEALTHY"
     end
     
 

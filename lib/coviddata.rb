@@ -26,17 +26,5 @@ class Covidtracker::Coviddata
         @@all.detect {|s| s.state == name}        
     end
 
-    #list data
-    def self.list_data(state)
-        puts "State: #{find_by_state_name(state).state}"
-        puts "Date: #{find_by_state_name(state).date}"
-        puts "Positive cases: #{find_by_state_name(state).positive}"
-        puts "Negative cases: #{find_by_state_name(state).negative}"
-        puts "Positive Case Increase: #{find_by_state_name(state).positiveIncrease}"
-        puts "Hospitalized: #{find_by_state_name(state).hospitalized}"
-        puts "Recovered: #{find_by_state_name(state).recovered}"
-        puts "Deaths: #{find_by_state_name(state).death}"
-    end
-
 
 end
