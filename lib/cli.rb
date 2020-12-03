@@ -11,6 +11,7 @@ class Covidtracker::CLI
     def greeting
         puts "Now loading COVID TRACKER..."
         Covidtracker::API.new.get_all_state_current
+        Covidtracker::API.new.get_state_metadata  #############
     end
 
     #display all available states
@@ -22,7 +23,7 @@ class Covidtracker::CLI
 
     #asks user which state they want to see
     def ask_state
-        puts "What state would you like to see?"
+        puts "What state would you like to see?:"
         response = gets.upcase.strip
         print_data(response)
     end
