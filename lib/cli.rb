@@ -48,7 +48,7 @@ class Covidtracker::CLI
         puts "------------------------------"
 
         #Ask if user would like to see metadata
-        ask_meta(state)
+        ask_meta(state) #pass in state to #ask_meta to hold onto instance
 
         #Ask to choose another state
         ask_another
