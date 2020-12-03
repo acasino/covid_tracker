@@ -7,6 +7,7 @@ class Covidtracker::CLI
         goodbye
     end
 
+    #opening message and new instance of data
     def greeting
         puts "Now loading COVID TRACKER..."
         Covidtracker::API.new.get_all_state_current
@@ -26,11 +27,13 @@ class Covidtracker::CLI
         print_data(response)
     end
 
+    #display user input and initiate #list_data
     def print_data(state)
         puts "You chose: "
         list_data(state)        
     end
 
+    #display instance attributes based on user state choice
     def list_data(state)
         puts "------------------------------"
         puts "State: #{Covidtracker::Coviddata.find_by_state_name(state).state}"
@@ -47,6 +50,7 @@ class Covidtracker::CLI
         ask_another
     end
 
+    #method to ask for another state input
     def ask_another
         puts "Choose another state?: Y/N"
         response = gets.upcase.strip
@@ -64,7 +68,7 @@ class Covidtracker::CLI
 
     end
 
-
+    #closing message
     def goodbye
         puts "Closing application..."
         puts "TAKE CARE AND STAY HEALTHY"
