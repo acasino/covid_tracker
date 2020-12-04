@@ -11,7 +11,6 @@ class Covidtracker::CLI
     def run
         greeting
         list_states
-        # map
         ask_state
         goodbye
     end
@@ -34,8 +33,10 @@ class Covidtracker::CLI
     def ask_state
         puts "What state would you like to see?:"
         response = gets.upcase.strip
-        if STATES.include?(response)
+        if STATES.include?(response) && response != "EXIT"
             print_data(response)
+        elsif response == "EXIT"
+            exit
         else
             puts "------------------------------"
             puts "Please put valid state or territory abbreviation."
@@ -68,6 +69,7 @@ class Covidtracker::CLI
 
         #Ask to choose another state
         ask_another
+        
     end
 
     #method to ask for another state input
@@ -77,9 +79,8 @@ class Covidtracker::CLI
 
         if response == "Y"
             ask_state
-        elsif response == "N"
-            puts "------------------------------"
-            puts "Thank you for using COVID TRACKER."
+        elsif response == "N" || response == "EXIT"
+            exit
         else response != "Y" || response != "N"
             puts "------------------------------"
             puts "Please input 'Y' or 'N' only."
@@ -97,10 +98,10 @@ class Covidtracker::CLI
             list_meta(state)
         elsif response == "N"
             puts "------------------------------"
-        else response != "Y" || response != "N"
+        else 
             puts "------------------------------"
             puts "Please input 'Y' or 'N' only."
-            ask_meta
+            ask_meta(state)
         end
     end
 
@@ -115,6 +116,11 @@ class Covidtracker::CLI
         puts "------------------------------"
     end
 
+    #early exit
+    def exit
+        puts "------------------------------"
+        puts "Thank you for using COVID TRACKER."    
+    end
 
     #closing message
     def goodbye
