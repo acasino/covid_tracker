@@ -37,15 +37,16 @@ class Covidtracker::CLI
 
     #display instance attributes based on user state choice
     def list_data(state)
+        find = Covidtracker::Coviddata.find_by_state_name(state)
         puts "------------------------------"
-        puts "State: #{Covidtracker::Coviddata.find_by_state_name(state).state}"
-        puts "Date: #{Covidtracker::Coviddata.find_by_state_name(state).date}"
-        puts "Positive cases: #{Covidtracker::Coviddata.find_by_state_name(state).positive}"
-        puts "Negative cases: #{Covidtracker::Coviddata.find_by_state_name(state).negative}"
-        puts "Positive Case Increase: #{Covidtracker::Coviddata.find_by_state_name(state).positiveIncrease}"
-        puts "Hospitalized: #{Covidtracker::Coviddata.find_by_state_name(state).hospitalized}"
-        puts "Recovered: #{Covidtracker::Coviddata.find_by_state_name(state).recovered}"
-        puts "Deaths: #{Covidtracker::Coviddata.find_by_state_name(state).death}"
+        puts "State: #{find.state}"
+        puts "Date: #{find.date}"
+        puts "Positive cases: #{find.positive}"
+        puts "Negative cases: #{find.negative}"
+        puts "Positive Case Increase: #{find.positiveIncrease}"
+        puts "Hospitalized: #{find.hospitalized}"
+        puts "Recovered: #{find.recovered}"
+        puts "Deaths: #{find.death}"
         puts "------------------------------"
 
         #Ask if user would like to see metadata
@@ -91,11 +92,12 @@ class Covidtracker::CLI
 
     #method to retrieve metadata
     def list_meta(state)
+        find = Covidtracker::Metadata.find_by_state_name(state)
         puts "------------------------------"
-        puts "State: #{Covidtracker::Metadata.find_by_state_name(state).name}"
-        puts "State Website: #{Covidtracker::Metadata.find_by_state_name(state).covid19Site}"
-        puts "Twitter: #{Covidtracker::Metadata.find_by_state_name(state).twitter}"
-        puts "Additional Notes: #{Covidtracker::Metadata.find_by_state_name(state).notes}"
+        puts "State: #{find.name}"
+        puts "State Website: #{find.covid19Site}"
+        puts "Twitter: #{find.twitter}"
+        puts "Additional Notes: #{find.notes}"
         puts "------------------------------"
     end
 
