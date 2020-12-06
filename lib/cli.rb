@@ -54,7 +54,8 @@ class Covidtracker::CLI
     def list_data(state)
         find = Covidtracker::Coviddata.find_by_state_name(state)
         puts "------------------------------"
-        puts "State: #{find.state}"
+        puts "State: #{Covidtracker::Metadata.find_by_state_name(state).name}"
+        # puts "State: #{find.state}"
         puts "Date: #{find.date}"
         puts "Positive cases: #{find.positive}"
         puts "Negative cases: #{find.negative}"
@@ -128,37 +129,5 @@ class Covidtracker::CLI
         puts "TAKE CARE AND STAY HEALTHY"
     end
 
-    # #USA Map
-    # def map 
-    #     puts "                                                                                                                                                                                                                                                                                                                                                            
-    #     --./+/:-..`                                                                       
-    #     :o/oooooooo++/::--..```                                                  .--      
-    #     +oooooooooooooooooooo+++++////::::::::::.``                              +oo-     
-    #    :oooooooooooooooooooooooooooooooooooooooooo++/- ``                       .oooo:    
-    #   -oooooooooooooooooooooooooooooooooooooooooooo+:.-//:.::-`            ..-:/ooo/.`    
-    #  -oooooooooooooooooooooooooooooooooooooooooooooooooooo:..//.          :ooooooo-       
-    #  /ooooooooooooooooooooooooooooooooooooooooooooooooooo+``+oo/.      ``.oooooooo.       
-    # .oooooooooooooooooooooooooooooooooooooooooooooooooooo+ .ooo+o.    :++ooooooo+/-`      
-    # :oooooooooooooooooooooooooooooooooooooooooooooooooooo+  +ooo+` `-/oooooooo+:.`        
-    # -ooooooooooooooooooooooooooooooooooooooooooooooooooooo::oooo+//+oooooooooo/           
-    #  /ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo++/.           
-    #  -ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo/:/            
-    #  `ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo+-.            
-    #   :ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo+-            
-    #   `/+ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo+-            
-    #     `-+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo+.`            
-    #       `+ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo+-`              
-    #        `.../+ooooooooooooooooooooooooooooooooooooooooooooooooooooooo/`                
-    #             `.:+ooooooooooooooooooooooooooooooooooooooooooooooooooo.                  
-    #        `.``     `.--:-..-+oooooooooooooooooooooooooooooooooooooooo/                   
-    #       :ooo+/-            `-oooooooooooooooooooooooooo++++//+oo+ooo+`                  
-    #      -/ooooo/              :+o/:/+oooooooooo++/+++o+/.`     .. .:oo+.                 
-    #     `:/ooooo/      `        `.   `+oooooo++-`     ..``           /oo+.                
-    #      -+o+/:/:``      `````        `/ooo+-`                       `+ooo.               
-    #      `.-.    `--`        .:`        +oo:                           -+o-               
-    #     `          ``        `.         `.--                            `.    
-        
-    #     "
-    # end
 
 end
