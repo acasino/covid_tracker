@@ -29,7 +29,8 @@ class Covidtracker::CLI
 
     #display user input and initiate #list_data
     def print_data(state)
-        puts "You chose: "
+        puts "Loading data: "
+        sleep(0.4)
         list_data(state)        
     end
 
@@ -62,6 +63,7 @@ class Covidtracker::CLI
     def ask_another
         puts "Choose another state?: Y/N"
         response = gets.upcase.strip
+        sleep(0.3)
         system "clear"
 
         if response == "Y"
@@ -82,10 +84,13 @@ class Covidtracker::CLI
         response = gets.upcase.strip
 
         if response == "Y"
+            sleep(0.5)
             list_meta(state)
         elsif response == "N"
+            sleep(0.3)
             puts "------------------------------"
         else 
+            sleep(0.3)
             puts "------------------------------"
             puts "Please input 'Y' or 'N' only."
             ask_meta(state)
@@ -115,6 +120,7 @@ class Covidtracker::CLI
     #closing message
     def goodbye
         puts "Closing application..."
+        sleep(0.5)
         puts "TAKE CARE AND STAY HEALTHY"
     end
 
