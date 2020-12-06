@@ -1,19 +1,13 @@
 class Covidtracker::CLI
-
-    STATES = 
-    [
-        "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", 
-    "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
-    "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", 
-    "VA", "WA", "WV", "WI", "WY", "DC", "GU", "MP", "PR", "VI"
-    ]
     
+    
+    #run sequence for CLI
     def run
         greeting
-        list_states
         ask_state
         goodbye
     end
+
 
     #opening message and new instance of data
     def greeting
@@ -22,33 +16,22 @@ class Covidtracker::CLI
         Covidtracker::API.new.get_state_metadata  
     end
 
-    #display all available states
-    def list_states
-        Covidtracker::Coviddata.all.each do |s|
-            puts "State: #{s.state}"
-        end
-    end
 
     #asks user which state they want to see
     def ask_state
-        puts "What state would you like to see?:"
-        response = gets.upcase.strip
-        if STATES.include?(response) && response != "EXIT"
-            print_data(response)
-        elsif response == "EXIT"
-            exit
-        else
-            puts "------------------------------"
-            puts "Please put valid state or territory abbreviation."
-            ask_state
-        end
+        prompt = TTY::Prompt.new
+        pre_response = prompt.select("Which state/territory would you like to view?", %w(AL-Alabama AK-Alaska AZ-Arizona AR-Arkansas CA-California CO-Colorado CT-Conneticut DE-Delaware FL-Florida GA-Georgia HI-Hawaii ID-Idaho IL-Illinois IN-Indiana IA-Iowa KS-Kansas KY-Kentucky LA-Louisiana ME-Maine MD-Maryland MA-Massachusetts MI-Michigan MN-Minnesota MS-Mississippi MO-Missouri MT-Montana NE-Nebraska NV-Nevada NH-NewHampshire NJ-NewJersey NM-NewMexico NY-NewYork NC-NorthCarolina ND-NorthDakota OH-Ohio OK-Oklahoma OR-Oregon PA-Pennsylvania RI-RhodeIsland SC-SouthCarolina SD-SouthDakota TN-Tennessee TX-Texas UT-Utah VT-Vermont VA-Virginia WA-Washington WV-WestVirginia WI-Wisconsin WY-Wyoming DC-WashingtonDC GU-Guam MP-NorthernMarianas PR-PuertoRico VI-VirginIslands))
+        response = pre_response[0, 2]
+        print_data(response)
     end
+
 
     #display user input and initiate #list_data
     def print_data(state)
         puts "You chose: "
         list_data(state)        
     end
+
 
     #display instance attributes based on user state choice
     def list_data(state)
@@ -72,6 +55,7 @@ class Covidtracker::CLI
         ask_another
         
     end
+
 
     #method to ask for another state input
     def ask_another
@@ -106,6 +90,7 @@ class Covidtracker::CLI
         end
     end
 
+
     #method to retrieve metadata
     def list_meta(state)
         find = Covidtracker::Metadata.find_by_state_name(state)
@@ -117,11 +102,13 @@ class Covidtracker::CLI
         puts "------------------------------"
     end
 
+
     #early exit
     def exit
         puts "------------------------------"
         puts "Thank you for using COVID TRACKER."    
     end
+
 
     #closing message
     def goodbye
