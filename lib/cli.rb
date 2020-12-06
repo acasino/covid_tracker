@@ -40,7 +40,6 @@ class Covidtracker::CLI
         find = Covidtracker::Coviddata.find_by_state_name(state)
         puts "------------------------------"
         puts "State: #{Covidtracker::Metadata.find_by_state_name(state).name}"
-        # puts "State: #{find.state}"
         puts "Date: #{find.date}"
         puts "Positive cases: #{find.positive}"
         puts "Negative cases: #{find.negative}"
