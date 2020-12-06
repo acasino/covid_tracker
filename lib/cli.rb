@@ -1,8 +1,9 @@
 class Covidtracker::CLI
-    
+
     
     #run sequence for CLI
     def run
+        system "clear"
         greeting
         ask_state
         goodbye
@@ -61,6 +62,7 @@ class Covidtracker::CLI
     def ask_another
         puts "Choose another state?: Y/N"
         response = gets.upcase.strip
+        system "clear"
 
         if response == "Y"
             ask_state
