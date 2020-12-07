@@ -4,6 +4,8 @@ class Covidtracker::CLI
     #run sequence for CLI
     def run
         system "clear"
+        Covidtracker::CovidSymbol.new.run
+        system "clear"
         greeting
         ask_state
         goodbye
@@ -12,7 +14,7 @@ class Covidtracker::CLI
 
     #opening message and new instance of data
     def greeting
-        puts "Now loading COVID TRACKER..."
+        puts "WELCOME TO COVID TRACKER..."
         Covidtracker::API.new.get_all_state_current
         Covidtracker::API.new.get_state_metadata  
     end
