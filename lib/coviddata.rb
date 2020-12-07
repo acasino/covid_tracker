@@ -1,7 +1,5 @@
 class Covidtracker::Coviddata
 
-    # attr_accessor :date, :state, :states, :positive, :negative, :pending, :hospitalized, :recovered, :lastModified, :death, :deathIncrease, :hospitalizedIncrease, :negativeIncrease, :positiveIncrease, :totalTestResultsIncrease, :dataQualityGrade
-
     @@all = []
 
     #create new state instance with data attributes

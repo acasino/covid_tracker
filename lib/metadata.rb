@@ -1,7 +1,5 @@
 class Covidtracker::Metadata
 
-    # attr_accessor :state, :notes, :covid19Site, :twitter, :name
-
     @@all = []
 
     #create new state instance with data attributes

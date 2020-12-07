@@ -1,4 +1,3 @@
-#Scraper file to get data
 class Covidtracker::API
 
     #initialize url

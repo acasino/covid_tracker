@@ -1,9 +1,11 @@
 class Covidtracker::CovidSymbol
 
+    #run method to call in CLI
     def run
         Covidtracker::CovidSymbol.go
     end
 
+    #begin animation sequence
     def self.frame_one
         puts"
         
@@ -269,6 +271,7 @@ NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
     sleep(0.09)
     end
 
+    #Loop through animation
     def self.animation
         c = Covidtracker::CovidSymbol
         2.times do 
@@ -283,6 +286,7 @@ NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
         end
     end
 
+    #separation of run sequence
     def self.go
         system 'clear'
         puts "WELCOME TO COVID TRACKER"
